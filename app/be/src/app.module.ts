@@ -16,6 +16,8 @@ import { Room } from './modules/room/room.entity';
 import { RoomModule } from './modules/room/room.module';
 import { Equipment } from './modules/equipment/equipment.entity';
 import { EquipmentModule } from './modules/equipment/equipment.module';
+import { Appointment } from './modules/appointment/appointment.entity';
+import { AppointmentModule } from './modules/appointment/appointment.module';
 
 @Module({
   imports: [
@@ -25,7 +27,16 @@ import { EquipmentModule } from './modules/equipment/equipment.module';
       type: 'sqlite',
       database: 'petsalon.sqlite',
       synchronize: true,
-      entities: [Salon, Client, Pet, ServiceEntity, Employee, Room, Equipment],
+      entities: [
+        Salon,
+        Client,
+        Pet,
+        ServiceEntity,
+        Employee,
+        Room,
+        Equipment,
+        Appointment,
+      ],
     }),
     EmployeeModule,
     SalonModule,
@@ -34,6 +45,7 @@ import { EquipmentModule } from './modules/equipment/equipment.module';
     ServiceModule,
     RoomModule,
     EquipmentModule,
+    AppointmentModule,
   ],
   controllers: [],
   providers: [],
