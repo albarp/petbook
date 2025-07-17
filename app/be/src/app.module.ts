@@ -4,6 +4,7 @@ import { EmployeeModule } from './modules/employee/employee.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Salon } from './modules/salon/salon.entity';
+import { SalonModule } from './modules/salon/salon.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { Salon } from './modules/salon/salon.entity';
       entities: [Salon],
     }),
     EmployeeModule,
+    SalonModule,
   ],
   controllers: [],
   providers: [],

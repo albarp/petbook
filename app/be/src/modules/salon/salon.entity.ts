@@ -20,9 +20,6 @@ export class Salon {
   @Column({ type: 'text', nullable: true })
   phone: string | null;
 
-  @Column({ type: 'text', nullable: true })
-  website: string | null;
-
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
