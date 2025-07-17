@@ -22,6 +22,8 @@ import { SalonHours } from './modules/salon-hours/salon-hours.entity';
 import { SalonHoursModule } from './modules/salon-hours/salon-hours.module';
 import { EmployeeAvailability } from './modules/employee-availability/employee-availability.entity';
 import { EmployeeAvailabilityModule } from './modules/employee-availability/employee-availability.module';
+import { EmployeeBreaks } from './modules/employee-breaks/employee-breaks.entity';
+import { EmployeeBreaksModule } from './modules/employee-breaks/employee-breaks.module';
 
 @Module({
   imports: [
@@ -42,6 +44,7 @@ import { EmployeeAvailabilityModule } from './modules/employee-availability/empl
         Appointment,
         SalonHours,
         EmployeeAvailability,
+        EmployeeBreaks,
       ],
     }),
     EmployeeModule,
@@ -54,6 +57,7 @@ import { EmployeeAvailabilityModule } from './modules/employee-availability/empl
     AppointmentModule,
     SalonHoursModule,
     EmployeeAvailabilityModule,
+    EmployeeBreaksModule,
   ],
   controllers: [],
   providers: [],
