@@ -18,6 +18,8 @@ import { Equipment } from './modules/equipment/equipment.entity';
 import { EquipmentModule } from './modules/equipment/equipment.module';
 import { Appointment } from './modules/appointment/appointment.entity';
 import { AppointmentModule } from './modules/appointment/appointment.module';
+import { SalonHours } from './modules/salon-hours/salon-hours.entity';
+import { SalonHoursModule } from './modules/salon-hours/salon-hours.module';
 
 @Module({
   imports: [
@@ -36,6 +38,7 @@ import { AppointmentModule } from './modules/appointment/appointment.module';
         Room,
         Equipment,
         Appointment,
+        SalonHours,
       ],
     }),
     EmployeeModule,
@@ -46,6 +49,7 @@ import { AppointmentModule } from './modules/appointment/appointment.module';
     RoomModule,
     EquipmentModule,
     AppointmentModule,
+    SalonHoursModule,
   ],
   controllers: [],
   providers: [],
