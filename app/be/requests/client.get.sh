@@ -1,2 +1,2 @@
 #!/bin/bash
-curl -s http://localhost:3000/client
+curl -i -s http://localhost:3000/client

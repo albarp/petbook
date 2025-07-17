@@ -1,2 +1,2 @@
 #!/bin/bash
-curl -s http://localhost:3000/pet 
+curl -i -s http://localhost:3000/pet 

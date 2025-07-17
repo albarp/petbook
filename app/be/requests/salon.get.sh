@@ -1,1 +1,2 @@
-curl -i -X GET http://localhost:3000/salon
+#!/bin/bash
+curl -i -s http://localhost:3000/salon
