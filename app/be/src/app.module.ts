@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Salon } from './modules/salon/salon.entity';
 import { SalonModule } from './modules/salon/salon.module';
+import { Client } from './modules/client/client.entity';
+import { ClientModule } from './modules/client/client.module';
 
 @Module({
   imports: [
@@ -14,10 +16,11 @@ import { SalonModule } from './modules/salon/salon.module';
       type: 'sqlite',
       database: 'petsalon.sqlite',
       synchronize: true,
-      entities: [Salon],
+      entities: [Salon, Client],
     }),
     EmployeeModule,
     SalonModule,
+    ClientModule,
   ],
   controllers: [],
   providers: [],
