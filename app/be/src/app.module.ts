@@ -26,6 +26,8 @@ import { EmployeeBreaks } from './modules/employee-breaks/employee-breaks.entity
 import { EmployeeBreaksModule } from './modules/employee-breaks/employee-breaks.module';
 import { EmployeeHolidays } from './modules/employee-holidays/employee-holidays.entity';
 import { EmployeeHolidaysModule } from './modules/employee-holidays/employee-holidays.module';
+import { SalonHolidays } from './modules/salon-holidays/salon-holidays.entity';
+import { SalonHolidaysModule } from './modules/salon-holidays/salon-holidays.module';
 
 @Module({
   imports: [
@@ -48,6 +50,7 @@ import { EmployeeHolidaysModule } from './modules/employee-holidays/employee-hol
         EmployeeAvailability,
         EmployeeBreaks,
         EmployeeHolidays,
+        SalonHolidays,
       ],
     }),
     EmployeeModule,
@@ -62,6 +65,7 @@ import { EmployeeHolidaysModule } from './modules/employee-holidays/employee-hol
     EmployeeAvailabilityModule,
     EmployeeBreaksModule,
     EmployeeHolidaysModule,
+    SalonHolidaysModule,
   ],
   controllers: [],
   providers: [],
