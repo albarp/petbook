@@ -7,6 +7,8 @@ import { Salon } from './modules/salon/salon.entity';
 import { SalonModule } from './modules/salon/salon.module';
 import { Client } from './modules/client/client.entity';
 import { ClientModule } from './modules/client/client.module';
+import { Pet } from './modules/pet/pet.entity';
+import { PetModule } from './modules/pet/pet.module';
 
 @Module({
   imports: [
@@ -16,11 +18,12 @@ import { ClientModule } from './modules/client/client.module';
       type: 'sqlite',
       database: 'petsalon.sqlite',
       synchronize: true,
-      entities: [Salon, Client],
+      entities: [Salon, Client, Pet],
     }),
     EmployeeModule,
     SalonModule,
     ClientModule,
+    PetModule,
   ],
   controllers: [],
   providers: [],
