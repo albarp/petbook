@@ -11,6 +11,9 @@ import { Pet } from './modules/pet/pet.entity';
 import { PetModule } from './modules/pet/pet.module';
 import { Service as ServiceEntity } from './modules/service/service.entity';
 import { ServiceModule } from './modules/service/service.module';
+import { Employee } from './modules/employee/employee.entity';
+import { Room } from './modules/room/room.entity';
+import { RoomModule } from './modules/room/room.module';
 
 @Module({
   imports: [
@@ -20,13 +23,14 @@ import { ServiceModule } from './modules/service/service.module';
       type: 'sqlite',
       database: 'petsalon.sqlite',
       synchronize: true,
-      entities: [Salon, Client, Pet, ServiceEntity],
+      entities: [Salon, Client, Pet, ServiceEntity, Employee, Room],
     }),
     EmployeeModule,
     SalonModule,
     ClientModule,
     PetModule,
     ServiceModule,
+    RoomModule,
   ],
   controllers: [],
   providers: [],

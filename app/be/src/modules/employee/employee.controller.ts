@@ -1,20 +1,19 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '../auth/auth.guard';
+import { Controller, Get, Post, Body } from '@nestjs/common';
+import { EmployeeService } from './employee.service';
+import { Employee } from './employee.entity';
+import { CreateEmployeeDto } from './dto/create-employee.dto';
 
 @Controller('employee')
 export class EmployeeController {
-  @UseGuards(AuthGuard)
+  constructor(private readonly employeeService: EmployeeService) {}
+
   @Get()
-  findAll() {
-    // Placeholder: return static list since service/entity is missing
-    return [
-      {
-        id: 1,
-        name: 'Alice',
-        email: 'alice@example.com',
-        phone: '123-456-7890',
-      },
-      { id: 2, name: 'Bob', email: 'bob@example.com', phone: '987-654-3210' },
-    ];
+  findAll(): Promise<Employee[]> {
+    return this.employeeService.findAll();
+  }
+
+  @Post()
+  create(@Body() data: CreateEmployeeDto): Promise<Employee> {
+    return this.employeeService.create(data);
   }
 }
