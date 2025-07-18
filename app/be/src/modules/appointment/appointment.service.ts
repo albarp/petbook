@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Between } from 'typeorm';
 import { Appointment } from './appointment.entity';
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { Salon } from '../salon/salon.entity';
@@ -28,6 +28,22 @@ export class AppointmentService {
 
   findAll(): Promise<Appointment[]> {
     return this.appointmentRepository.find({
+      relations: ['salon', 'pet', 'service', 'employee', 'room'],
+    });
+  }
+
+  async findByMonth(
+    year: number,
+    month: number,
+    salonId: number,
+  ): Promise<Appointment[]> {
+    const start = new Date(Date.UTC(year, month - 1, 1, 0, 0, 0));
+    const end = new Date(Date.UTC(year, month, 1, 0, 0, 0));
+    return this.appointmentRepository.find({
+      where: {
+        start_time: Between(start.toISOString(), end.toISOString()),
+        salon: { id: salonId },
+      },
       relations: ['salon', 'pet', 'service', 'employee', 'room'],
     });
   }
