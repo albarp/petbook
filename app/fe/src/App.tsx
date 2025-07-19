@@ -17,11 +17,12 @@ type Appointment = {
 function App() {
   const [events, setEvents] = useState<EventInput[]>([]);
   const [isLoggedIn, setIsLoggedIn] = useState(() => !!localStorage.getItem('token'));
+  const API_BASE = import.meta.env.VITE_API_BASE;
 
   useEffect(() => {
     if (!isLoggedIn) return;
     const token = localStorage.getItem('token');
-    fetch('http://localhost:3000/appointment/month?year=2024&month=6', {
+    fetch(`${API_BASE}/appointment/month?year=2024&month=6`, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
