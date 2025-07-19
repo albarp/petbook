@@ -3,6 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import './App.css';
 import { useEffect, useState } from 'react';
 import type { EventInput } from '@fullcalendar/core';
+import Login from './Login';
 
 type Appointment = {
   id: number;
@@ -15,12 +16,14 @@ type Appointment = {
 
 function App() {
   const [events, setEvents] = useState<EventInput[]>([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => !!localStorage.getItem('token'));
 
   useEffect(() => {
-    //TODO: move to call module
+    if (!isLoggedIn) return;
+    const token = localStorage.getItem('token');
     fetch('http://localhost:3000/appointment/month?year=2024&month=6', {
       headers: {
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiam9obiIsInNhbG9uSWQiOjEsImlhdCI6MTc1Mjg1MzY1NCwiZXhwIjoxNzUyODU0MjU0fQ.dL8VZx-PC3Qb46xhvdH7EM2WxO0eGPeNiRrvOnt9oxw',
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
       }
     })
@@ -35,10 +38,20 @@ function App() {
           }) as EventInput)
         );
       });
-  }, []);
+  }, [isLoggedIn]);
+
+  const handleLogin = () => setIsLoggedIn(true);
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    setEvents([]);
+  };
+
+  if (!isLoggedIn) return <Login onLogin={handleLogin} />;
 
   return (
     <div className="calendar-container">
+      <button onClick={handleLogout} style={{ float: 'right' }}>Logout</button>
       <FullCalendar
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
