@@ -39,7 +39,7 @@ function App() {
           }) as EventInput)
         );
       });
-  }, [isLoggedIn]);
+  }, [API_BASE, isLoggedIn]);
 
   const handleLogin = () => setIsLoggedIn(true);
   const handleLogout = () => {
