@@ -18,7 +18,7 @@ function Login({ onLogin }: { onLogin: () => void }) {
       if (!res.ok) throw new Error('Login failed');
       const data = await res.json();
       if (!data.access_token) throw new Error('No token returned');
-      localStorage.setItem('token', data.token);
+      localStorage.setItem('token', data.access_token);
       onLogin();
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Unknown error');
